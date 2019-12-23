@@ -8,6 +8,9 @@ https://docs.djangoproject.com/en/2.2/topics/settings/
 
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
+
+FULL CODEs: https://github.com/do-community/django-polls
+
 """
 
 import os
