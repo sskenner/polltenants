@@ -1,3 +1,5 @@
+.ls/
+.DS_Store
 venv/
 _build/
 build/
