@@ -75,12 +75,9 @@ class QuestionIndexViewTests(TestCase):
     even if both past and future questions exist, only past questions are displayed
     """
     create_question(question_text="Past question.", days=-30)
-    create_question(question_text="Future question.", days=-30)
+    create_question(question_text="Future question.", days=30)
     response = self.client.get(reverse('polls:index'))
-    self.assertQuerysetEqual(
-      response.context['latest_question_list'],
-      ['<Question: Past question.>']
-    )
+    self.assertQuerysetEqual(response.context['latest_question_list'], ['<Question: Past question.>'])
   
   def test_two_past_questions(self):
     """
@@ -109,7 +106,7 @@ class QuestionDetailViewTests(TestCase):
     the detail view of a question with a pub_date in the past displays the question's text
     """
     past_question = create_question(question_text='Past Question.', days=-5)
-    url = reverse('polls:detail', args=(future_question.id,))
+    url = reverse('polls:detail', args=(past_question.id,))
     response = self.client.get(url)
     self.assertContains(response, past_question.question_text)
     
